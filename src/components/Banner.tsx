@@ -1,10 +1,9 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/moving-border";
 import { FaFacebookSquare, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { IoDocumentTextOutline } from "react-icons/io5";
+import Button from "./ui/Button";
 
 const socialLinks = [
   { href: "https://www.linkedin.com/in/tahmedofficial", icon: <FaLinkedin className="hover:bg-black hover:text-white duration-300" /> },
@@ -14,13 +13,15 @@ const socialLinks = [
 
 const personalInfo = {
   name: "Tanvir Ahmed",
-  title: "---- Junior Web Developer",
+  title: "---- Junior MERN Stack Web Developer",
   description: "I am Tanvir Ahmed, a MERN Stack Web Developer with a passion for building scalable, high-performance web applications. With expertise in MongoDB, Express.js, React, and Node.js, I specialize in developing user-friendly and responsive web solutions. I am currently pursuing a Bachelor’s degree in Apparel Merchandising & Management at BGMEA University of Fashion & Technology. Alongside my academic journey, I have dedicated myself to mastering modern web technologies, staying updated with industry trends, and continuously improving my skills."
 }
 
-const imgUrl = "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?b=1&s=612x612&w=0&k=20&c=VsTsa0kjyZ7ALe-nyKAUfynyRxZo8H4LRMdu_ecPuOY="
 
 const Banner = () => {
+
+  const imgUrl = "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?b=1&s=612x612&w=0&k=20&c=VsTsa0kjyZ7ALe-nyKAUfynyRxZo8H4LRMdu_ecPuOY="
+
   return (
     <div className="mt-10 lg:mt-20">
       <div className="lg:grid lg:grid-cols-3 flex flex-col-reverse">
@@ -32,9 +33,7 @@ const Banner = () => {
             <h2 className="text-xl lg:text-2xl text-center lg:text-left">{personalInfo.title}</h2>
             <p className="text-sm lg:text-base">{personalInfo.description}</p>
             <Link href="tanvir-ahmed-CV.pdf" download="tanvir-ahmed-resume.pdf">
-              <Button borderRadius="1.75rem" className="bg-[#1F1F1F] text-white">
-                Download CV <IoDocumentTextOutline className="text-lg" />
-              </Button>
+              <Button text="Download CV"></Button>
             </Link>
           </div>
 
