@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SEO></SEO>
-      <body className={`${poppins.className} bg-white`}>
+      <body className={`${poppins.className} bg-white px-3`}>
         {children}
         <Footer></Footer>
       </body>

@@ -4,6 +4,8 @@ const SEO = () => {
 
     return (
         <Head>
+            <title>Tanvir Ahmed | MERN Stack Developer & Next.js Expert</title>
+            <meta name="description" content="Hi, I'm Tanvir Ahmed, a MERN stack developer proficient in MongoDB, Express.js, React, and Node.js. Explore my projects, blogs, and open-source contributions." />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -24,8 +26,6 @@ const SEO = () => {
                     }),
                 }}
             />
-            <title>Tanvir Ahmed | MERN Stack Developer & Next.js Expert</title>
-            <meta name="description" content="Hi, I'm Tanvir Ahmed, a MERN stack developer proficient in MongoDB, Express.js, React, and Node.js. Explore my projects, blogs, and open-source contributions." />
         </Head>
     );
 };
