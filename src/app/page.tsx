@@ -1,5 +1,6 @@
 import AboutMe from "@/components/AboutMe";
 import Banner from "@/components/Banner";
+import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Banner></Banner>
       <AboutMe></AboutMe>
       <Skills></Skills>
+      <Education></Education>
     </main>
   );
 }

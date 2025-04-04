@@ -52,7 +52,7 @@ const AboutMe: React.FC = () => {
                     <div className="grid grid-cols-3 gap-3">
                         {
                             aboutInfo.cart.map(({ Icon, title, subTitle }) => <div
-                                className="flex flex-col gap-1 items-center p-5 shadow-lg border-t rounded-lg"
+                                className="flex flex-col gap-1 items-center p-5 shadow-lg border-t border-gray-300 rounded-lg"
                                 key={title}>
                                 <Icon className="text-2xl"></Icon>
                                 <h2 className="text-lg font-medium">{title}</h2>

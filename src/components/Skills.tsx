@@ -1,4 +1,3 @@
-"use client";
 import { IconType } from "react-icons";
 import { FaCss3Alt, FaGitAlt, FaGithub, FaHtml5, FaNodeJs, FaReact, } from "react-icons/fa";
 import { RiJavascriptFill, RiNextjsFill, RiTailwindCssFill, } from "react-icons/ri";
