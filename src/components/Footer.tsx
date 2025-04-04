@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                     </Link>
                 ))}
             </div>
-            <p className="mt-8">&copy; {currentYear} Tanvir Ahmed. All rights reserved.</p>
+            <p className="mt-8">Copyright &copy; {currentYear} - All rights reserved by Tanvir Ahmed.</p>
         </footer>
     );
 };
