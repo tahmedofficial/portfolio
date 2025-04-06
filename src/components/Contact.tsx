@@ -11,13 +11,9 @@ const Contact = () => {
     const form = useRef<HTMLFormElement | null>(null);
     const [isSending, setIsSending] = useState(false);
 
-    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
-
-
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!form.current) {
-            console.error("Form reference is null");
             return;
         }
 
@@ -36,7 +32,6 @@ const Contact = () => {
                 () => {
                     e.currentTarget.reset();
                     setIsSending(false);
-                    console.log("Message sent");
                 },
                 (error) => {
                     setIsSending(false);
