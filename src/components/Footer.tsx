@@ -21,7 +21,7 @@ const Footer = async ({ theme }: { theme: string }) => {
                 <ul className="flex justify-center gap-7">
                     {["Projects", "Education", "Skills"].map((item) => (
                         <li key={item}>
-                            <Link href={`/${item.toLowerCase()}`} className="text-p-color hover:underline">
+                            <Link href={`/${item.toLowerCase()}`} className="hover:underline">
                                 {item}
                             </Link>
                         </li>

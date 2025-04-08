@@ -6,6 +6,8 @@ import { navItems } from "../Navbar";
 
 interface NavMenuProps {
     isOpen: boolean;
+    setOpen: (open: boolean) => void;
+    pathName: string;
 }
 
 const useMenuAnimation = (isOpen: boolean) => {
@@ -28,7 +30,7 @@ const useMenuAnimation = (isOpen: boolean) => {
     return scope;
 };
 
-const ToggleMenu: React.FC<NavMenuProps> = ({ isOpen }) => {
+const ToggleMenu = ({ isOpen, setOpen, pathName }: NavMenuProps) => {
 
     const scope = useMenuAnimation(isOpen);
     const [isClosed, setClosed] = useState(false)
@@ -54,14 +56,12 @@ const ToggleMenu: React.FC<NavMenuProps> = ({ isOpen }) => {
     return (
         <div ref={scope}>
             <nav className={isClosed ? "absolute h-screen w-full pl-7 pt-8 bg-black bg-opacity-80 z-10" : "hidden"}>
-                <ul className="flex flex-col gap-4 mt-14 text-white">
-                    {navItems.map((item) => (
-                        <li
-                            key={item.path}
-                            style={{ transformOrigin: '-20px 50%' }}
-                            className="transform-origin-left">
-                            <Link href={item.path} className="border-b-2 duration-300 px-2 pb-1 border-transparent hover:border-white">
-                                {item.title}
+                <ul className="flex flex-col gap-3 mt-14 text-white">
+                    {navItems.map(({ title, path }) => (
+                        <li key={path} className={`origin-left py-1 ${path === pathName ? "bg-white text-black" : undefined}`}>
+                            <Link onClick={() => setOpen(false)} href={path}
+                                className={`px-3 ${path === pathName ? undefined : "hover:underline"}`}>
+                                {title}
                             </Link>
                         </li>
                     ))}

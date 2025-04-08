@@ -4,6 +4,7 @@ import Link from "next/link";
 import Hamburger from "hamburger-react";
 import ToggleMenu from "@/components/ui/ToggleMenu";
 import Theme from "./ui/Theme";
+import { usePathname } from "next/navigation";
 
 export const navItems: { title: string; path: string }[] = [
     { title: "Home", path: "/" },
@@ -15,12 +16,14 @@ export const navItems: { title: string; path: string }[] = [
 ];
 
 const Navbar: React.FC = () => {
+
     const [isOpen, setOpen] = useState<boolean>(false);
+    const pathName = usePathname();
 
     return (
         <nav className="relative w-full h-full">
             <div className="lg:hidden">
-                <ToggleMenu isOpen={isOpen}></ToggleMenu>
+                <ToggleMenu isOpen={isOpen} setOpen={setOpen} pathName={pathName}></ToggleMenu>
             </div>
 
             <div className="container mx-auto flex items-center justify-between px-5 py-4">
@@ -35,7 +38,8 @@ const Navbar: React.FC = () => {
                 <ul className="flex gap-6 items-center">
                     {navItems.map(({ title, path }) => (
                         <li key={title}>
-                            <Link href={path} className="border-b-2 hidden lg:block border-transparent text-p-color transition-all duration-300 hover:border-p-color">
+                            <Link href={path}
+                                className={`hidden lg:block ${path === pathName ? "border-b" : "hover:underline"}`}>
                                 {title}
                             </Link>
                         </li>
