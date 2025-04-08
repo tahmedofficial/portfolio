@@ -15,7 +15,7 @@ const Footer = async ({ theme }: { theme: string }) => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="py-12 mt-16 shadow-inner text-center">
+        <footer className={`py-12 mt-16 shadow-inner ${theme === "light" && "shadow-neutral-700"} text-center`}>
             <h1 className="text-3xl font-medium">Tanvir Ahmed</h1>
             <nav className="mt-8">
                 <ul className="flex justify-center gap-7">

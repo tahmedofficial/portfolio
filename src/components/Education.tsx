@@ -76,7 +76,7 @@ const Education = () => {
         <div className="mt-16">
             <div className="text-center space-y-1">
                 <h1 className="text-3xl md:text-4xl font-medium">Education</h1>
-                <h3 className="text-gray-500">My personal journey</h3>
+                <h3 className={theme === "dark" ? "text-gray-500" : "text-gray-300"}>My personal journey</h3>
             </div>
 
             <div className="mt-16 flex justify-center space-x-4">

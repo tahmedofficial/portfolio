@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
-const AboutMe: React.FC = () => {
+const AboutMe = () => {
 
     const [theme, setTheme] = useState("light");
 
@@ -49,7 +49,7 @@ const AboutMe: React.FC = () => {
         <div className="mt-10 md:mt-16 text-p-color">
             <div className="text-center space-y-1">
                 <h1 className="text-3xl md:text-4xl font-medium">{aboutInfo.title}</h1>
-                <h3 className="text-gray-500">{aboutInfo.subTitle}</h3>
+                <h3 className={theme === "dark" ? "text-gray-500" : "text-gray-300"}>{aboutInfo.subTitle}</h3>
             </div>
             <div className="grid gap-8 grid-cols-1 lg:grid-cols-3 mt-12 md:mt-16">
                 <div className="col-span-1 flex items-center">
@@ -65,11 +65,11 @@ const AboutMe: React.FC = () => {
                     <div className="grid grid-cols-3 gap-3">
                         {
                             aboutInfo.cart.map(({ Icon, title, subTitle }) => <div
-                                className="flex flex-col gap-1 items-center p-5 shadow-lg border-t border-gray-300 rounded-lg"
+                                className={`flex flex-col gap-1 items-center p-5 shadow-lg ${theme === "dark" ? "border-gray-300" : "shadow-neutral-700 border-neutral-700"} border-t rounded-lg`}
                                 key={title}>
                                 <Icon className="text-2xl"></Icon>
                                 <h2 className="text-lg font-medium">{title}</h2>
-                                <p className="text-gray-500">{subTitle}</p>
+                                <p className={theme === "dark" ? "text-gray-500" : "text-gray-300"}>{subTitle}</p>
                             </div>)
                         }
                     </div>
