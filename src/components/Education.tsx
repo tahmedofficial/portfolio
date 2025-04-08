@@ -1,7 +1,8 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaCircle, FaGraduationCap } from "react-icons/fa";
 import { motion } from 'framer-motion';
+import Cookies from "js-cookie";
 
 
 type TimelineItem = {
@@ -58,7 +59,17 @@ const Education = () => {
         },
     ];
 
-    const [activeTab, setActiveTab] = useState<'education' | 'courses'>('education');
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        const storedTheme = Cookies.get("theme")
+        if (storedTheme) {
+            setTheme(storedTheme);
+        }
+    }, [])
+
+
+    const [activeTab, setActiveTab] = useState<string>('education');
     const lineHide = (activeTab === "education" ? educationData : coursesData).length
 
     return (
@@ -69,21 +80,27 @@ const Education = () => {
             </div>
 
             <div className="mt-16 flex justify-center space-x-4">
-                {['education', 'courses'].map((tab) => (
-                    <motion.button
-                        key={tab}
-                        onClick={() => setActiveTab(tab as 'education' | 'courses')}
-                        className={`py-2 px-4 rounded-lg flex items-center gap-2 ${activeTab === tab ? 'bg-p-color text-white' : 'bg-gray-200 text-black'}`}
-                        animate={{
-                            backgroundColor: activeTab === tab ? '#1F1F1F' : '#E5E7EB',
-                            color: activeTab === tab ? '#FFFFFF' : '#000000',
-                        }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <FaGraduationCap />
-                        {tab === 'education' ? 'Education' : 'Courses'}
-                    </motion.button>
-                ))}
+                {['education', 'courses'].map((tab) => {
+
+                    const darkModeClass = activeTab === tab ? "#1F1F1F" : "#E5E7EB";
+                    const lightModeClass = activeTab === tab ? "#E5E7EB" : "#1F1F1F";
+
+                    return (
+                        <motion.button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={`py-2 px-4 rounded-lg flex items-center gap-2`}
+                            animate={{
+                                backgroundColor: theme === "dark" ? darkModeClass : lightModeClass,
+                                color: theme === "dark" ? lightModeClass : darkModeClass,
+                            }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <FaGraduationCap />
+                            {tab === 'education' ? 'Education' : 'Courses'}
+                        </motion.button>
+                    )
+                })}
             </div>
 
             <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-16">

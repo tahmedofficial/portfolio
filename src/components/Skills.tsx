@@ -14,7 +14,7 @@ const Skills = () => {
 
     const frontendSkills: Skill[] = [
         { name: "React.js", level: "Intermediate", icon: FaReact },
-        { name: "Next.js", level: "Intermediate", icon: RiNextjsFill },
+        { name: "Next.js", level: "Basic", icon: RiNextjsFill },
         { name: "TypeScript", level: "Basic", icon: BiLogoTypescript },
         { name: "JavaScript", level: "Intermediate", icon: RiJavascriptFill },
         { name: "HTML", level: "Intermediate", icon: FaHtml5 },

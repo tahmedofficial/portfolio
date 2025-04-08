@@ -5,15 +5,27 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import Button from "./ui/Button";
 import { socialLinks } from "./Footer";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+
 
 const Banner = () => {
+
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const storedTheme = Cookies.get("theme")
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, [])
 
   const personalInfo = {
     name: "Tanvir Ahmed",
     title: "---- Junior MERN Stack Web Developer",
     description: "Building Scalable Web Applications with React & Next.js | I am a MERN Stack Web Developer specializing in high-performance, user-friendly, and responsive web applications. With expertise in MongoDB, Express.js, React, and Node.js, I craft scalable applications that enhance user experience. Passionate about modern web technologies, I stay updated with industry trends to deliver innovative and efficient web applications."
   }
-
+  // const theme = "dark"
   const imgUrl = "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?b=1&s=612x612&w=0&k=20&c=VsTsa0kjyZ7ALe-nyKAUfynyRxZo8H4LRMdu_ecPuOY="
 
   return (
@@ -27,7 +39,7 @@ const Banner = () => {
             <h2 className="text-xl lg:text-2xl text-center lg:text-left">{personalInfo.title}</h2>
             <p className="text-sm lg:text-base">{personalInfo.description}</p>
             <Link href="tanvir-ahmed-CV.pdf" download="tanvir-ahmed-resume.pdf">
-              <Button text="Resume" icon={CgSoftwareDownload}></Button>
+              <Button text="Resume" theme={theme} icon={CgSoftwareDownload}></Button>
             </Link>
           </div>
 
@@ -35,7 +47,7 @@ const Banner = () => {
           <div className="hidden lg:flex flex-col gap-6 text-3xl">
             {socialLinks.map(({ href, Icon }) => (
               <Link key={href} href={href} target="_blank" className="duration-300 p-2 rounded">
-                <Icon className="hover:bg-black hover:text-white duration-300"></Icon>
+                <Icon className={`${theme === "dark" ? "hover:bg-black hover:text-white" : "hover:bg-white hover:text-black"} duration-300`}></Icon>
               </Link>
             ))}
           </div>
@@ -47,7 +59,7 @@ const Banner = () => {
           <div className="lg:hidden flex flex-col gap-6 text-3xl">
             {socialLinks.map(({ href, Icon }) => (
               <Link key={href} href={href} target="_blank" className="hover:bg-p-color hover:text-white duration-300 p-2 rounded">
-                <Icon className="hover:bg-black hover:text-white duration-300"></Icon>
+                <Icon className={`${theme === "dark" ? "hover:bg-black hover:text-white" : "hover:bg-white hover:text-black"} duration-300`}></Icon>
               </Link>
             ))}
           </div>
@@ -67,14 +79,14 @@ const Banner = () => {
 
       {/* Scroll Down Indicator */}
       <div className="h-14 flex gap-3 items-center justify-center mt-10 md:mt-16">
-        <div className="border-2 border-black px-2 hover:bg-black hover:text-white duration-300 pb-2 rounded-xl">|</div>
+        <div className={`border-2 px-2 ${theme === "dark" ? "hover:bg-black hover:text-white border-black" : "hover:bg-white hover:text-black border-white"} duration-300 pb-2 rounded-xl`}>|</div>
         <h3 className="font-medium">Scroll Down</h3>
         <motion.span animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}>
           <FaArrowDownLong />
         </motion.span>
       </div>
 
-    </div>
+    </div >
   );
 };
 

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { RiAwardLine } from "react-icons/ri";
 import { VscGithubProject } from "react-icons/vsc";
@@ -5,8 +6,20 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import Button from "./ui/Button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const AboutMe: React.FC = () => {
+
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        const storedTheme = Cookies.get("theme")
+        if (storedTheme) {
+            setTheme(storedTheme);
+        }
+    }, [])
+
 
     const aboutInfo = {
         title: "About Me",
@@ -63,7 +76,7 @@ const AboutMe: React.FC = () => {
                     <div className="mt-10 space-y-8">
                         <h3>{aboutInfo.description}</h3>
                         <Link href="/tanvir-ahmed-resume.pdf" download="tanvir-ahmed-resume.pdf">
-                            <Button text="Download CV" icon={IoDocumentTextOutline}></Button>
+                            <Button text="Download CV" theme={theme} icon={IoDocumentTextOutline}></Button>
                         </Link>
                     </div>
                 </div>

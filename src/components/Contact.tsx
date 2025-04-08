@@ -1,15 +1,25 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { BsSend } from "react-icons/bs";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Modal from "@/components/ui/Modal";
 import Button from "./ui/Button";
+import Cookies from "js-cookie";
+
 
 const Contact = () => {
     const form = useRef<HTMLFormElement | null>(null);
     const [isSending, setIsSending] = useState(false);
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        const storedTheme = Cookies.get("theme")
+        if (storedTheme) {
+            setTheme(storedTheme);
+        }
+    }, [])
 
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -73,7 +83,7 @@ const Contact = () => {
                             <textarea className="h-28 mt-3 border border-gray-500 rounded-xl outline-none pt-3 px-4" name="message" placeholder="Write your message" required></textarea>
                         </div>
                         <div className="mt-10">
-                            <Button text={isSending ? "Sending..." : "Send Message"} icon={BsSend}></Button>
+                            <Button theme={theme} text={isSending ? "Sending..." : "Send Message"} icon={BsSend}></Button>
                         </div>
                     </form>
                 </div>

@@ -18,18 +18,19 @@ const Theme = () => {
 
     useEffect(() => {
         const saved = getCookie('theme') as "dark" | "light" | null;
-        if (saved) setTheme(saved);
-    }, []);
+        if (saved) {
+            setTheme(saved);
+        }
+    }, [theme]);
 
     const toggleTheme = () => {
         const newTheme = theme === "dark" ? "light" : "dark";
+        if (newTheme === "light") {
+            setTheme(newTheme);
+        }
         setCookie("theme", newTheme);
-        setTheme(newTheme);
         window.location.reload();
     };
-
-    console.log(theme);
-
 
     return (
         <button

@@ -5,8 +5,6 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { cookies } from "next/headers";
-import type { RequestCookies } from "next/dist/compiled/@edge-runtime/cookies";
-
 
 const poppins = Poppins({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] })
 
@@ -16,13 +14,13 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
-  const cookieStore = cookies() as unknown as RequestCookies;
+  const cookieStore = await cookies();
   const theme = cookieStore.get('theme')?.value ?? 'light';
 
   return (
@@ -31,7 +29,7 @@ export default function RootLayout({
       <body className={`${poppins.className} ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`}>
         <Navbar></Navbar>
         {children}
-        <Footer></Footer>
+        <Footer theme={theme}></Footer>
       </body>
     </html>
   );

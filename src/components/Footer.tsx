@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FaFacebookSquare, FaGithub, FaLinkedin } from "react-icons/fa";
 // import { navItems } from "./Navbar";
 
+
 export const socialLinks = [
     { href: "https://www.linkedin.com/in/tahmedofficial", Icon: FaLinkedin },
     { href: "https://github.com/tahmedofficial", Icon: FaGithub },
@@ -9,7 +10,7 @@ export const socialLinks = [
 ];
 
 
-const Footer: React.FC = () => {
+const Footer = async ({ theme }: { theme: string }) => {
 
     const currentYear = new Date().getFullYear();
 
@@ -30,7 +31,7 @@ const Footer: React.FC = () => {
             <div className="flex justify-center gap-7 mt-8 text-3xl">
                 {socialLinks.map(({ href, Icon }) => (
                     <Link key={href} href={href} target="_blank" rel="noopener noreferrer">
-                        <Icon className="hover:bg-black hover:text-white duration-300"></Icon>
+                        <Icon className={`${theme === "dark" ? "hover:bg-black hover:text-white" : "hover:bg-white hover:text-black"} duration-300`}></Icon>
                     </Link>
                 ))}
             </div>
