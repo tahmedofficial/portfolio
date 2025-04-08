@@ -25,8 +25,8 @@ const Banner = () => {
     title: "---- Junior MERN Stack Web Developer",
     description: "Building Scalable Web Applications with React & Next.js | I am a MERN Stack Web Developer specializing in high-performance, user-friendly, and responsive web applications. With expertise in MongoDB, Express.js, React, and Node.js, I craft scalable applications that enhance user experience. Passionate about modern web technologies, I stay updated with industry trends to deliver innovative and efficient web applications."
   }
-  // const theme = "dark"
-  const imgUrl = "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?b=1&s=612x612&w=0&k=20&c=VsTsa0kjyZ7ALe-nyKAUfynyRxZo8H4LRMdu_ecPuOY="
+
+  const imgUrl = "https://raw.githubusercontent.com/tahmedofficial/portfolio-images/refs/heads/main/protfolio-img.png";
 
   return (
     <div className="mt-10 lg:mt-20">

@@ -28,7 +28,9 @@ export default async function RootLayout({
       <SEO></SEO>
       <body className={`${poppins.className} ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`}>
         <Navbar></Navbar>
-        {children}
+        <main className="md:w-4/6 mx-auto px-3 md:px-0">
+          {children}
+        </main>
         <Footer theme={theme}></Footer>
       </body>
     </html>
