@@ -63,7 +63,7 @@ const Projects = () => {
                         {
                             project.tech.map((techName, index) => <h3
                                 key={index}
-                                className="bg-blue-200 text-blue-600 text-center rounded-md">
+                                className="bg-blue-200 text-blue-500 text-center rounded-md">
                                 {techName}
                             </h3>)
                         }
