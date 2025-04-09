@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { cookies } from "next/headers";
+import BackgroundEffects from "@/components/ui/BackgroundEffects";
 
 const poppins = Poppins({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] })
 
@@ -27,11 +28,16 @@ export default async function RootLayout({
     <html lang="en">
       <SEO></SEO>
       <body className={`${poppins.className} ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`}>
-        <Navbar></Navbar>
-        <main className="md:w-4/6 mx-auto px-3 md:px-0">
-          {children}
+        <main className="relative min-h-screen w-full">
+          <BackgroundEffects></BackgroundEffects>
+          <div className="relative z-10">
+            <Navbar></Navbar>
+            <div className="md:w-4/6 mx-auto px-3 md:px-0">
+              {children}
+            </div>
+            <Footer theme={theme}></Footer>
+          </div>
         </main>
-        <Footer theme={theme}></Footer>
       </body>
     </html>
   );
