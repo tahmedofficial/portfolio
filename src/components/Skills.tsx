@@ -59,10 +59,10 @@ const Skills = () => {
                     <div className="grid grid-cols-2 gap-7 mt-10">
                         {
                             frontendSkills.map(({ name, level, icon: Icon }) => <div
-                                className="flex gap-4 cursor-pointer"
+                                className="grid grid-cols-5"
                                 key={name}>
-                                <Icon className="mt-1 text-2xl" />
-                                <div>
+                                <Icon className="mt-1 text-2xl col-span-1" />
+                                <div className="col-span-4">
                                     <h3 className="text-2xl font-medium">{name}</h3>
                                     <h3 className={theme === "dark" ? "text-gray-500" : "text-gray-300"}>{level}</h3>
                                 </div>
@@ -77,10 +77,10 @@ const Skills = () => {
                     <div className="grid grid-cols-2 gap-7 mt-10">
                         {
                             backendSkills.map(({ name, level, icon: Icon }) => <div
-                                className="flex gap-4 cursor-pointer"
+                                className="grid grid-cols-5"
                                 key={name}>
-                                <Icon className="mt-1 text-2xl" />
-                                <div>
+                                <Icon className="mt-1 text-2xl col-span-1" />
+                                <div className="col-span-4">
                                     <h3 className="text-2xl font-medium">{name}</h3>
                                     <h3 className={theme === "dark" ? "text-gray-500" : "text-gray-300"}>{level}</h3>
                                 </div>

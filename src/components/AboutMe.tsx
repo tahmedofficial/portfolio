@@ -5,7 +5,6 @@ import { VscGithubProject } from "react-icons/vsc";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import Button from "./ui/Button";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
@@ -75,9 +74,9 @@ const AboutMe = () => {
                     </div>
                     <div className="mt-10 space-y-8">
                         <h3>{aboutInfo.description}</h3>
-                        <Link href="/tanvir-ahmed-resume.pdf" download="tanvir-ahmed-resume.pdf">
+                        <a href="/tanvir-ahmed-cv.pdf" download="tanvir-ahmed-CV.pdf">
                             <Button text="Download CV" theme={theme} icon={IoDocumentTextOutline}></Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

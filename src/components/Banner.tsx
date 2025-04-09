@@ -38,9 +38,9 @@ const Banner = () => {
             <h1 className="text-4xl lg:text-5xl font-medium text-center md:text-left">{personalInfo.name}</h1>
             <h2 className="text-xl lg:text-2xl text-center lg:text-left">{personalInfo.title}</h2>
             <p className="text-sm lg:text-base">{personalInfo.description}</p>
-            <Link href="tanvir-ahmed-CV.pdf" download="tanvir-ahmed-resume.pdf">
+            <a href="tanvir-ahmed-resume.pdf" download="tanvir-ahmed-resume.pdf">
               <Button text="Resume" theme={theme} icon={CgSoftwareDownload}></Button>
-            </Link>
+            </a>
           </div>
 
           {/* Desktop Social Icons */}
