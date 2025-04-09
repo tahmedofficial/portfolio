@@ -45,7 +45,7 @@ const AboutMe = () => {
     }
 
     return (
-        <div className="mt-10 md:mt-16 text-p-color">
+        <div className="mt-10 md:mt-16">
             <div className="text-center space-y-1">
                 <h1 className="text-3xl md:text-4xl font-medium">{aboutInfo.title}</h1>
                 <h3 className={theme === "dark" ? "text-gray-500" : "text-gray-300"}>{aboutInfo.subTitle}</h3>
