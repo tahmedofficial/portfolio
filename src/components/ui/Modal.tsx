@@ -15,8 +15,8 @@ const Modal: FC<ModalProps> = ({ isOpen }) => {
                 className="bg-white rounded-xl px-20 py-10 flex flex-col gap-5 items-center mx-4"
                 onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
             >
-                <h1 className="text-2xl md:text-3xl font-medium">Sending message</h1>
-                <span className="loading loading-dots loading-md"></span>
+                <h1 className="text-2xl md:text-3xl font-medium text-black">Sending message</h1>
+                <span className="loading text-black loading-dots loading-md"></span>
             </div>
         </div>
     );

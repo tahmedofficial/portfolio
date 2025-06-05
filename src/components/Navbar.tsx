@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
                     {navItems.map(({ title, path }) => (
                         <li key={title}>
                             <Link href={path}
-                                className={`hidden lg:block ${path === pathName ? "border-b" : "hover:underline"}`}>
+                                className={`hidden lg:block ${path === pathName ? "underline" : "hover:underline"}`}>
                                 {title}
                             </Link>
                         </li>

@@ -7,6 +7,9 @@ import { MdEmail } from "react-icons/md";
 import Modal from "@/components/ui/Modal";
 import Button from "./ui/Button";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
+import { toast } from 'react-toastify';
+
 
 interface ContactInfoProps {
     Icon: React.ElementType;
@@ -15,7 +18,7 @@ interface ContactInfoProps {
 }
 
 const Contact = () => {
-    const form = useRef<HTMLFormElement | null>(null);
+    const form = useRef<HTMLFormElement>(null);
     const [isSending, setIsSending] = useState(false);
     const [theme, setTheme] = useState("light");
 
@@ -26,32 +29,40 @@ const Contact = () => {
         }
     }, [])
 
-    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         if (!form.current) {
             return;
         }
-
         setIsSending(true);
 
-        emailjs
-            .sendForm(
-                process.env.NEXT_PUBLIC_SERVICE_ID!,
-                process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-                form.current,
-                {
-                    publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
-                }
-            )
+        emailjs.sendForm('service_98v8fz7', 'template_zutmo3e', form.current, { publicKey: "7OJq2ea30ycpaUACL" })
             .then(
                 () => {
-                    e.currentTarget.reset();
                     setIsSending(false);
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your email has been sent",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    form.current?.reset();
                 },
                 (error) => {
                     setIsSending(false);
-                    console.error("FAILED...", error.text);
-                }
+                    toast.error("Something Wrong", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
+                    console.log('FAILED...', error.text);
+                },
             );
     };
 
@@ -81,19 +92,19 @@ const Contact = () => {
                             <label className={`absolute top-0 left-7 ${theme === "dark" ? "bg-white" : "bg-black"} px-2 rounded-xl`}>
                                 <span>Name</span>
                             </label>
-                            <input className={`h-12 mt-3 border ${theme==="dark"? "border-gray-500":"border-gray-300"} rounded-xl outline-none px-4`} type="text" name="fromName" placeholder="Insert your name" required />
+                            <input className={`h-12 mt-3 border ${theme === "dark" ? "border-gray-500" : "border-gray-300"} rounded-xl outline-none px-4`} type="text" name="name" placeholder="Insert your name" required />
                         </div>
                         <div className="flex flex-col relative mt-4">
                             <label className={`absolute top-0 left-7 ${theme === "dark" ? "bg-white" : "bg-black"} px-2 rounded-xl`}>
                                 <span>Email</span>
                             </label>
-                            <input className={`h-12 mt-3 border ${theme==="dark"? "border-gray-500":"border-gray-300"} rounded-xl outline-none px-4`} type="email" name="fromEmail" placeholder="Insert your email" required />
+                            <input className={`h-12 mt-3 border ${theme === "dark" ? "border-gray-500" : "border-gray-300"} rounded-xl outline-none px-4`} type="email" name="email" placeholder="Insert your email" required />
                         </div>
                         <div className="flex flex-col relative mt-4">
                             <label className={`absolute top-0 left-7 ${theme === "dark" ? "bg-white" : "bg-black"} px-2 rounded-xl`}>
                                 <span>Message</span>
                             </label>
-                            <textarea className={`h-28 mt-3 border ${theme==="dark"? "border-gray-500":"border-gray-300"} rounded-xl outline-none pt-3 px-4`} name="message" placeholder="Write your message" required></textarea>
+                            <textarea className={`h-28 mt-3 border ${theme === "dark" ? "border-gray-500" : "border-gray-300"} rounded-xl outline-none pt-3 px-4`} name="message" placeholder="Write your message" required></textarea>
                         </div>
                         <div className="mt-10">
                             <Button theme={theme} text={isSending ? "Sending..." : "Send Message"} icon={BsSend}></Button>

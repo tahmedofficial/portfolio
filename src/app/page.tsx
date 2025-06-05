@@ -3,6 +3,7 @@ import Banner from "@/components/Banner";
 import Contact from "@/components/Contact";
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
 
@@ -13,6 +14,7 @@ export default function Home() {
       <Skills></Skills>
       <Education></Education>
       <Contact></Contact>
+      <ToastContainer />
     </div>
   );
 }
